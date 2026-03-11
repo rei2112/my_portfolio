@@ -6,26 +6,28 @@ $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
 ?>
 
-<h2>About Me</h2>
 
-<p><strong>Name:</strong> <?php echo $row['full_name']; ?></p>
-
-<p><?php echo $row['description']; ?></p>
-
-<ul>
-
-<li><strong>Age:</strong> <?php echo $row['age']; ?></li>
-
-<li><strong>Birthdate:</strong> <?php echo $row['birthdate']; ?></li>
-
-<li><strong>Gender:</strong> <?php echo $row['gender']; ?></li>
-
-<li><strong>Marital Status:</strong> <?php echo $row['marital_status']; ?></li>
-
-<li><strong>Religion:</strong> <?php echo $row['religion']; ?></li>
-
-<li><strong>Language:</strong> <?php echo $row['language']; ?></li>
-
-</ul>
+<div class="about-card">
+	<div class="about-card-grid">
+		<div class="about-card-image">
+			<img src="assets/images/about-profile.jpg" alt="Profile photo" class="about-image">
+		</div>
+		<div class="about-card-content">
+			<p class="about-kicker">Discover</p>
+			<h2>About Me</h2>
+			<p class="about-description"><?php echo htmlspecialchars($row['description'] ?? 'Write a short introduction about yourself in the admin panel.'); ?></p>
+			<div class="about-info-grid">
+				<p><strong>Name:</strong> <?php echo htmlspecialchars($row['full_name'] ?? '-'); ?></p>
+				<p><strong>Age:</strong> <?php echo htmlspecialchars($row['age'] ?? '-'); ?></p>
+				<p><strong>Birthdate:</strong> <?php echo htmlspecialchars($row['birthdate'] ?? '-'); ?></p>
+				<p><strong>Gender:</strong> <?php echo htmlspecialchars($row['gender'] ?? '-'); ?></p>
+				<p><strong>Marital Status:</strong> <?php echo htmlspecialchars($row['marital_status'] ?? '-'); ?></p>
+				<p><strong>Religion:</strong> <?php echo htmlspecialchars($row['religion'] ?? '-'); ?></p>
+				<p><strong>Language:</strong> <?php echo htmlspecialchars($row['language'] ?? '-'); ?></p>
+			</div>
+			<a href="assets/cv/my-cv.pdf" class="download-cv-btn" download>DOWNLOAD CV</a>
+		</div>
+	</div>
+</div>
 
 </section>
